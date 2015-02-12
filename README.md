@@ -2,6 +2,8 @@
 
 > image-silhouette plugin for [gulp](https://github.com/wearefractal/gulp)
 
+![gulp-image-silhouette](https://cloud.githubusercontent.com/assets/1150412/6162386/728b7e66-b2c5-11e4-813a-094b34dfa851.png)
+
 ## Usage
 
 First, install `gulp-image-silhouette` as a development dependency:

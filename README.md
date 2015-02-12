@@ -15,10 +15,10 @@ npm install --save-dev gulp-image-silhouette
 Then, add it to your `gulpfile.js`:
 
 ```javascript
-var image-silhouette = require("gulp-image-silhouette");
+var silhouette = require("gulp-image-silhouette");
 
 gulp.src("./src/*.png")
-	.pipe(image-silhouette({
+	.pipe(silhouette({
 		color: 'white'
 	}))
 	.pipe(gulp.dest("./dist"));

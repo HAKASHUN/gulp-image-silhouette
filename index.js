@@ -33,33 +33,17 @@ module.exports = function (param) {
 
 		// check if file.contents is a `Buffer`
 		if (file.isBuffer()) {
+			var imageMagick = gm.subClass({ imageMagick: true });
 
-			var outline = gm(file.contents, file.path).modulate(0);
-
-			if(param.color === 'white') {
-				outline
-					.stream(function(err, stdout, stderr) {
-						if(err) {
-							// accepting streams is optional
-							self.emit("error",
-								new gutil.PluginError("gulp-image-silhouette", "Failed getting image as stream."));
-							return callback();
-						}
-						gm(stdout)
-							.negative()
-							.toBuffer(function(err, buffer) {
-								file.contents = buffer;
-								return callback(null, file);
-							});
-					});
-			} else {
-				outline
-					.toBuffer(function(err, buffer) {
-						file.contents = buffer;
-						return callback(null, file);
-					});
-			}
-
+			var color = param.color || 'black';
+			imageMagick(file.contents, file.path)
+				.command('convert')
+				.in('-background', color)
+				.in('-shadow', '100x0+0+0')
+				.toBuffer(function(err, buffer) {
+					file.contents = buffer;
+					return callback(null, file);
+				});
 		}
 	}
 

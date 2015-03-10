@@ -29,9 +29,10 @@ gulp.src("./src/*.png")
 #### options.color
 Type: `String`  
 Default: `black`
-Possible values: `black`, `white`
 
 The Silhouette color for image.
+
+Ex. `rgb(0, 0, 0)`, `#CCCCCC`
 
 
 ## License
